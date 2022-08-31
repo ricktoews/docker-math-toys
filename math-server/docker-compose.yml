@@ -1,0 +1,17 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+
+version: '3'
+
+# Define services
+services:
+
+  # Math Toys API
+  # dc
+  # reciprocal
+  # pythag
+  # pythag-c
+  # phi
+  math:
+    image: "rtoews/math-toys:python"
+    ports:
+      - "5000:5000"
