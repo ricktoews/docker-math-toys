@@ -1,22 +1,38 @@
+# system stuff
 import json
 import sys
-sys.path.insert(1, '.')
+
+# sys.path.insert(1, '.')
+
+from flask import Flask, jsonify
+
+# Import my math stuff.
 from modules.calc_decimal import calc_decimal
 from modules.get_phi import get_phi
 from modules.get_triples import get_triples, get_pythag_by_corner
-from flask import Flask, jsonify
+
 
 # OUTPUT application/json
+# ... and make it pretty.
+# Consider extracting this into a module, just to clean things up a bit.
 def format_payload(data):
 	str = json.dumps(data, indent=4, separators=(',', ': '))
 	return str, 200, { 'Content-type': 'application/json' }
 
+
+
+# Flask for Python API.
 app = Flask(__name__)
 
+
+# ... And start routing ...
 @app.route("/")
 def hello():
-	return "Hello, World!"
+	# Would be much better to have the default go to a document page, or at least something entertaining.
+	return "Hello, World! Welcome to my cool math api!"
 
+# Accept a denominator, and return the reciprocal.
+# This gives the same information as /dc/denom, but without all of the other, probably less interesting, numerators.
 @app.route("/reciprocal/<param_denom>")
 def reciprocal(param_denom):
 	denom = int(param_denom)
@@ -56,4 +72,4 @@ def phi(power: int):
 if __name__ == '__main__':
 
     # Run the app
-    app.run(port=8080, host="0.0.0.0")
+    app.run(port=5000, host="0.0.0.0")

@@ -10,8 +10,8 @@ def get_pythag_by_corner(param_corner):
 	corner = int(param_corner)
 	squares = []
 	i = 1
-	circuit_breaker = 50
-	while len(squares) <= 40 and circuit_breaker > 0:
+	circuit_breaker = 500
+	while len(squares) <= 100 and circuit_breaker > 0:
 		test = corner * (corner + 2 * i)
 		sqrt = int(math.sqrt(test))
 		print("test %d, sqrt %d" % (test, sqrt))
